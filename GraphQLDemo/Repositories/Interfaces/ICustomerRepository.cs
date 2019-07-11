@@ -8,6 +8,7 @@ namespace GraphQLDemo.Repositories.Interfaces
     {
         List<Customer> GetAll();
         Customer GetCustomerById(int id);
+        Customer AddCustomer(Customer customer);
     }
 }
       

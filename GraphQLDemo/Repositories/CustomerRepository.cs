@@ -7,7 +7,7 @@ namespace GraphQLDemo.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private readonly List<Customer> _customers = new List<Customer>
+        private static readonly List<Customer> _customers = new List<Customer>
         {
             new Customer
             {
@@ -56,5 +56,10 @@ namespace GraphQLDemo.Repositories
         public List<Customer> GetAll() => _customers;
 
         public Customer GetCustomerById(int id) => _customers.FirstOrDefault(c => c.Id == id);
+        public Customer AddCustomer(Customer customer)
+        {
+            _customers.Add(customer);
+             return customer;
+        }
     }
 }

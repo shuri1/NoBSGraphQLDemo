@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="GraphQL\Subscriptions\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

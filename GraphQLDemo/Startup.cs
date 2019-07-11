@@ -7,6 +7,7 @@ using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
 using GraphQL.Types;
 using GraphQLDemo.GraphQL.GraphTypes;
+using GraphQLDemo.GraphQL.Mutations;
 using GraphQLDemo.GraphQL.Queries;
 using GraphQLDemo.GraphQL.Schemas;
 using GraphQLDemo.Repositories;
@@ -38,7 +39,9 @@ namespace GraphQLDemo
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddSingleton<ISchema, CustomerSchema>();
             services.AddSingleton<CustomerQuery>();
+            services.AddSingleton<CustomerMutation>();
             services.AddSingleton<CustomerType>();
+            services.AddSingleton<CustomerInputType>();
             services.AddSingleton<PortfolioType>();
             services.AddSingleton<StockType>();
             services.AddGraphQL();

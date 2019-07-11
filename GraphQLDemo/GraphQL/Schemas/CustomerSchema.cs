@@ -1,5 +1,6 @@
 ﻿using GraphQL;
 using GraphQL.Types;
+using GraphQLDemo.GraphQL.Mutations;
 using GraphQLDemo.GraphQL.Queries;
 
 namespace GraphQLDemo.GraphQL.Schemas
@@ -9,6 +10,7 @@ namespace GraphQLDemo.GraphQL.Schemas
         public CustomerSchema(IDependencyResolver resolver) : base(resolver)
         {
             Query = resolver.Resolve<CustomerQuery>();
+            Mutation = resolver.Resolve<CustomerMutation>();
         }
     }
 }
