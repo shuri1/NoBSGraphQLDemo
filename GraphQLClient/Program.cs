@@ -14,7 +14,7 @@ namespace GraphQLClient
 
         private static async Task Main(string[] args)
         {
-            var customers = await SimpleWebClientDemo();
+            //var customers = await SimpleWebClientDemo();
             var customer = await SimpleGraphQLClientDemo();
         }
 
@@ -22,11 +22,11 @@ namespace GraphQLClient
         {
             var customerRequest = new GraphQLRequest
             {
-                Query = @"query Sample($customerId :Int, $portfolioId: Int)
+                Query = @"query Sample($customerId :Int, $portfolioId: Int, $present: Boolean!)
                             {
                               customer:customer(id:$customerId)
                               {
-                                id
+                                id  @include(if: $present)
                                 address
                                  ...custFragment
                               }  
@@ -40,7 +40,7 @@ namespace GraphQLClient
                                 id
                               }
                             }",
-                Variables = new {portfolioId = 1, customerId = 2}
+                Variables = new {portfolioId = 1, customerId = 2, present = false}
             };
 
             var graphQLClient = new GraphQL.Client.GraphQLClient(GraphQlServerUrl);
