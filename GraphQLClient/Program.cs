@@ -10,7 +10,7 @@ namespace GraphQLClient
 {
     internal class Program
     {
-        private const string GraphQlServerUrl = "https://localhost:44326/graphQL";
+        private const string GraphQlServerUrl = "https://localhost:44307/GraphQL";
 
         private static async Task Main(string[] args)
         {
