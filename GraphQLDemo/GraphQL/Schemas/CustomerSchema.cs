@@ -11,6 +11,7 @@ namespace GraphQLDemo.GraphQL.Schemas
         {
             Query = resolver.Resolve<CustomerQuery>();
             Mutation = resolver.Resolve<CustomerMutation>();
+            
         }
     }
 }

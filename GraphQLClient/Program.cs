@@ -15,7 +15,37 @@ namespace GraphQLClient
         private static async Task Main(string[] args)
         {
             //var customers = await SimpleWebClientDemo();
-            var customer = await SimpleGraphQLClientDemo();
+            // var customer = await SimpleGraphQLClientDemo();
+            var customer = await SimpleMutationClientDemo();
+        }
+
+        private static async Task<Customer> SimpleMutationClientDemo()
+        {
+            var customerRequest = new GraphQLRequest
+            {
+                Query = @"mutation ($customer:CustomerInput!) 
+                            {
+                                    createCustomer(customer: $customer) 
+                                    {
+                                    id
+                                    name
+                                    city
+                                }
+                      }",
+                Variables = new
+                {
+                    customer = new
+                    {
+                        name = "me", address="1234 anywhere", city="buffalo grove"
+                    }
+                }
+            };
+
+            var graphQLClient = new GraphQL.Client.GraphQLClient(GraphQlServerUrl);
+            var graphQLResponse = await graphQLClient.PostAsync(customerRequest);
+            var customer = graphQLResponse.GetDataFieldAs<Customer>("createCustomer");
+            return customer;
+
         }
 
         private static async Task<Customer> SimpleGraphQLClientDemo()
